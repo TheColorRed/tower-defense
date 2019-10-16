@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Enemies/Enemy.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 150.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 30.0
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="View Distance" type="Area2D" parent="."]
+editor/display_folded = true
+monitorable = false
+collision_layer = 0
+
+[node name="View" type="CollisionShape2D" parent="View Distance"]
+shape = SubResource( 1 )
+
+[node name="Body Detector" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 2
+collision_mask = 4
+
+[node name="Body" type="CollisionShape2D" parent="Body Detector"]
+shape = SubResource( 2 )
+
+[node name="Body" type="Sprite" parent="."]
+
+[node name="UI" type="Node2D" parent="."]
+position = Vector2( 0, -70 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Health Bar" type="ProgressBar" parent="UI"]
+margin_left = -50.0
+margin_top = -10.0
+margin_right = 50.0
+margin_bottom = 10.0
+rect_pivot_offset = Vector2( 50, 10 )
+step = 1.0
+percent_visible = false
+[connection signal="area_entered" from="View Distance" to="." method="on_view_enter"]
+[connection signal="area_exited" from="View Distance" to="." method="on_view_exit"]
+[connection signal="area_entered" from="Body Detector" to="." method="on_bullet_hit"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Enemies/Tank/Tank.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+
+export var unit_map: Dictionary = Dictionary()
+
+func get(property: String) -> PackedScene:
+	return unit_map.get(property)"
+
+[resource]
+script = SubResource( 1 )
+unit_map = {
+"tank": ExtResource( 1 )
+}

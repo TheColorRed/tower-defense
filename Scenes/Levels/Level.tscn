@@ -1,0 +1,143 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Units.tres" type="Resource" id=2]
+[ext_resource path="res://Resources/Bullets.tres" type="Resource" id=3]
+[ext_resource path="res://Fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/UI/Tower Button.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 1 )
+unit_map = ExtResource( 2 )
+bullets = ExtResource( 3 )
+
+[node name="Level Layer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite" parent="Level Layer"]
+centered = false
+
+[node name="Paths" type="Node2D" parent="Level Layer"]
+
+[node name="Towers" type="Node2D" parent="Level Layer"]
+
+[node name="Bullets" type="Node2D" parent="Level Layer"]
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="UI" type="Control" parent="UI Layer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1920.0
+margin_top = -1080.0
+margin_right = -1880.0
+margin_bottom = -1040.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="UI Layer/UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1640.0
+margin_top = -20.0
+margin_right = 1860.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 1 )
+text = "Exit"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Panel" type="Panel" parent="UI Layer/UI"]
+margin_top = 840.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="GridContainer" type="GridContainer" parent="UI Layer/UI"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1590.0
+margin_top = 850.0
+margin_right = 1870.0
+margin_bottom = 1030.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 4
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Tower Button" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_right = 72.0
+margin_bottom = 66.0
+
+[node name="Tower Button2" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_left = 82.0
+margin_right = 154.0
+margin_bottom = 66.0
+
+[node name="Tower Button3" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_left = 164.0
+margin_right = 236.0
+margin_bottom = 66.0
+
+[node name="Tower Button4" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_left = 246.0
+margin_right = 318.0
+margin_bottom = 66.0
+
+[node name="Tower Button5" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_top = 76.0
+margin_right = 72.0
+margin_bottom = 142.0
+
+[node name="Tower Button6" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_left = 82.0
+margin_top = 76.0
+margin_right = 154.0
+margin_bottom = 142.0
+
+[node name="Tower Button7" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_left = 164.0
+margin_top = 76.0
+margin_right = 236.0
+margin_bottom = 142.0
+
+[node name="Tower Button8" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_left = 246.0
+margin_top = 76.0
+margin_right = 318.0
+margin_bottom = 142.0
+
+[node name="Tower Button9" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_top = 152.0
+margin_right = 72.0
+margin_bottom = 218.0
+
+[node name="Tower Button10" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_left = 82.0
+margin_top = 152.0
+margin_right = 154.0
+margin_bottom = 218.0
+
+[node name="Tower Button11" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_left = 164.0
+margin_top = 152.0
+margin_right = 236.0
+margin_bottom = 218.0
+
+[node name="Tower Button12" parent="UI Layer/UI/GridContainer" instance=ExtResource( 5 )]
+margin_left = 246.0
+margin_top = 152.0
+margin_right = 318.0
+margin_bottom = 218.0
+[connection signal="pressed" from="UI Layer/UI/Button" to="." method="on_exit"]
